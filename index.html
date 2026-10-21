@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oltre il mestiere — Manuel Paini per Termoclima</title>
+<meta name="description" content="Il racconto dello stage di Manuel Paini in Termoclima: comunicazione, collaborazioni e risultati per una piccola azienda di termoidraulica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔥%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- Logo Termoclima riutilizzabile -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-flame" x1="0" y1="1" x2="0.4" y2="0">
+      <stop offset="0" stop-color="#E6261F"/>
+      <stop offset=".55" stop-color="#F26A1B"/>
+      <stop offset="1" stop-color="#FFC21A"/>
+    </linearGradient>
+    <linearGradient id="g-drop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3B3FB0"/>
+      <stop offset="1" stop-color="#23257A"/>
+    </linearGradient>
+    <symbol id="logo" viewBox="0 0 120 140">
+      <path class="lg-drop" fill="url(#g-drop)" d="M70 4C72 30 82 48 88 64c7 20 2 40-15 52-12 8-28 9-42 3 9 10 21 15 36 15 26 0 45-18 45-46C112 55 70 4 70 4Z"/>
+      <path class="lg-flame" fill="url(#g-flame)" d="M47 26c6 22-13 28-19 48-4 14 1 24 8 30h46c5-12 3-26-6-36-1 12-8 17-13 14 7-18-2-38-16-56Z"/>
+      <path class="lg-roof" fill="none" stroke="#E6261F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="M14 99 58 70l44 29"/>
+      <path class="lg-house" fill="#2E3192" d="M32 98 58 81l26 17v18c-15 8-37 8-52 0Z"/>
+      <g fill="#fff"><rect x="51" y="95" width="6" height="6" rx="1"/><rect x="59" y="95" width="6" height="6" rx="1"/><rect x="51" y="103" width="6" height="6" rx="1"/><rect x="59" y="103" width="6" height="6" rx="1"/></g>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#indice">Salta al contenuto</a>
+
+<!-- Preloader: la caldaia si accende -->
+<div class="loader" aria-hidden="true">
+  <div class="loader-panel">
+    <svg class="loader-logo"><use href="#logo"/></svg>
+    <div class="lcd"><span class="loader-temp">0</span><sup>°C</sup></div>
+    <p class="loader-txt">Accensione in corso</p>
+  </div>
+</div>
+
+<!-- Termostato fisso: la temperatura sale con lo scroll -->
+<div class="thermo" aria-hidden="true">
+  <div class="thermo-lcd"><span class="thermo-val">18</span><sup>°C</sup></div>
+  <div class="thermo-bar"><span class="thermo-fill"></span></div>
+</div>
+<div class="cursor" aria-hidden="true"></div>
+
+<header class="nav">
+  <a href="#top" class="nav-brand" aria-label="Torna all'inizio">
+    <svg><use href="#logo"/></svg><span>Termo<b>clima</b></span>
+  </a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Apri il menu"><span></span><span></span></button>
+  <nav aria-label="Sezioni" id="menu">
+    <a href="#scelta">Scelta</a>
+    <a href="#cliente">Cliente</a>
+    <a href="#collaborazioni">Collaborazioni</a>
+    <a href="#prodotti">Prodotti</a>
+    <a href="#risultati">Risultati</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- 1. COPERTINA -->
+<section class="hero">
+  <canvas class="embers"></canvas>
+  <div class="hero-blob blob-flame" data-speed="-0.35"></div>
+  <div class="hero-blob blob-drop" data-speed="0.25"></div>
+  <svg class="hero-ghost" data-speed="0.5" aria-hidden="true"><use href="#logo"/></svg>
+
+  <div class="hero-inner">
+    <div class="hero-logos">
+      <svg class="hero-logo" viewBox="0 0 120 140" aria-hidden="true">
+      <path class="lg-drop" fill="url(#g-drop)" d="M70 4C72 30 82 48 88 64c7 20 2 40-15 52-12 8-28 9-42 3 9 10 21 15 36 15 26 0 45-18 45-46C112 55 70 4 70 4Z"/>
+      <path class="lg-flame" fill="url(#g-flame)" d="M47 26c6 22-13 28-19 48-4 14 1 24 8 30h46c5-12 3-26-6-36-1 12-8 17-13 14 7-18-2-38-16-56Z"/>
+      <path class="lg-roof" fill="none" stroke="#E6261F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" d="M14 99 58 70l44 29"/>
+      <path class="lg-house" fill="#2E3192" d="M32 98 58 81l26 17v18c-15 8-37 8-52 0Z"/>
+      <g fill="#fff"><rect x="51" y="95" width="6" height="6" rx="1"/><rect x="59" y="95" width="6" height="6" rx="1"/><rect x="51" y="103" width="6" height="6" rx="1"/><rect x="59" y="103" width="6" height="6" rx="1"/></g>
+    </svg>
+      <div class="hero-brand">
+        <strong>Termo<b>clima</b></strong>
+        <span>Centro assistenza caldaie</span>
+      </div>
+      <span class="hero-x">×</span>
+      <svg class="rondani" viewBox="0 40 300 210" role="img" aria-label="Rondani, Istituto Tecnico Tecnologico">
+        <path d="M0 100 300 47" stroke="#F0952B" stroke-width="5"/>
+        <path d="M0 126 258 68l42 66" stroke="#C6D93B" stroke-width="5" fill="none"/>
+        <path d="M0 142 300 86" stroke="#D7262E" stroke-width="5"/>
+        <path d="M0 160 300 108v18L0 178Z" fill="currentColor"/>
+        <text x="28" y="212" fill="currentColor" font-family="Figtree, sans-serif" font-weight="700" font-size="44" letter-spacing="3">RONDANI</text>
+        <text x="30" y="246" fill="currentColor" font-family="Figtree, sans-serif" font-weight="400" font-size="15.5" letter-spacing="1.6">ISTITUTO TECNICO TECNOLOGICO</text>
+      </svg>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line">Oltre il</span>
+      <span class="line line-heat">mestiere</span>
+    </h1>
+    <p class="hero-sub">Il volto comunicativo dietro una piccola azienda di termoidraulica. Lo stage di <strong>Manuel Paini</strong>, raccontato dall'inizio ai numeri finali.</p>
+  </div>
+
+  <a href="#indice" class="hero-scroll">Scorri per accendere<span></span></a>
+</section>
+
+<!-- 2. INDICE -->
+<section class="index" id="indice">
+  <div class="index-media">
+    <figure class="index-photo">
+      <img src="assets/volantino.jpg" alt="Il volantino Promo caldaia di Termoclima: pulizia più fumi a 99 euro, in collaborazione con CS Immobiliare">
+    </figure>
+    <figcaption>Il primo volantino, appena stampato. Settembre 2026.</figcaption>
+  </div>
+  <div class="index-list">
+    <h2 class="h-section">Il percorso, passo per passo</h2>
+    <ol>
+      <li><a href="#scelta"><span class="n">01</span><span class="t">La mia scelta</span></a></li>
+      <li><a href="#competenze"><span class="n">02</span><span class="t">Le mie competenze</span></a></li>
+      <li><a href="#cliente"><span class="n">03</span><span class="t">Termoclima, il cliente</span></a></li>
+      <li><a href="#obiettivi"><span class="n">04</span><span class="t">Obiettivi</span></a></li>
+      <li><a href="#collaborazioni"><span class="n">05</span><span class="t">Collaborazioni</span></a></li>
+      <li><a href="#prodotti"><span class="n">06</span><span class="t">Tutti i prodotti creati</span></a></li>
+      <li><a href="#edoardo"><span class="n">07</span><span class="t">La call con Edoardo</span></a></li>
+      <li><a href="#imparato"><span class="n">08</span><span class="t">Cosa ho imparato</span></a></li>
+      <li><a href="#risultati"><span class="n">09</span><span class="t">Risultati</span></a></li>
+      <li><a href="#grazie"><span class="n">10</span><span class="t">Conclusioni e ringraziamenti</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 3. LA MIA SCELTA -->
+<section class="choice" id="scelta">
+  <div class="choice-pin">
+    <p class="choice-q">Perché fare qualcosa di diverso da un normale percorso di stage?</p>
+    <div class="choice-words" aria-label="Impresa, coraggio, determinazione, rischio">
+      <span>Impresa</span>
+      <span>Coraggio</span>
+      <span>Determinazione</span>
+      <span class="w-risk">Rischio</span>
+    </div>
+    <p class="choice-a">Il rischio di non fare abbastanza in poco tempo. E la voglia di capire davvero di cosa sono capace.</p>
+  </div>
+</section>
+
+<!-- 4. COMPETENZE -->
+<section class="skills" id="competenze">
+  <div class="spot" aria-hidden="true"></div>
+  <div class="skills-inner">
+    <h2 class="h-section">Le mie competenze</h2>
+    <p class="skills-lead">Non sono un genio della grafica, né del video editing. Ho puntato tutto sulla mia skill principale: <em>saper vendere un servizio.</em></p>
+    <blockquote class="skills-quote">I riflettori puntavano solo su di me. Dovevo inventarmi tutto da zero, e da solo. Ma era quello che volevo.</blockquote>
+    <div class="skills-weeks">
+      <div class="weeks-num"><span data-count="3">3</span></div>
+      <div class="weeks-txt">
+        <p>settimane per creare nuove opportunità di vendita, partendo dall'obiettivo del titolare: più clienti e una comunicazione visiva.</p>
+        <ul>
+          <li>Artefatti grafici</li>
+          <li>Collaborazioni con agenzie immobiliari</li>
+          <li>Collaborazioni con agenzie di comunicazione private</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. TERMOCLIMA -->
+<section class="client" id="cliente">
+  <div class="client-head">
+    <h2 class="h-section">Termoclima, il cliente</h2>
+    <p>Prima di comunicare bisognava capire. Ho studiato l'azienda, i suoi clienti e i suoi servizi, per scoprire cosa lo distingue dai competitor. La risposta era chiara: tutto. Dovevo solo capire come valorizzarlo.</p>
+  </div>
+
+  <div class="client-grid">
+    <div class="card3d-wrap">
+      <button class="card3d" type="button" aria-label="Gira il biglietto da visita">
+        <span class="card-face card-front"><img src="assets/card-front.jpg" alt="Biglietto da visita Termoclima, fronte"></span>
+        <span class="card-face card-back"><img src="assets/card-back.jpg" alt="Biglietto da visita Termoclima, retro con telefono ed email"></span>
+      </button>
+      <p class="card-hint">Tocca il biglietto per girarlo</p>
+    </div>
+
+    <ul class="strengths">
+      <li><h3>Rapidità</h3><p>Interventi veloci, senza settimane di attesa.</p></li>
+      <li><h3>Reperibilità</h3><p>Quasi istantanea. Termoclima risponde, sempre.</p></li>
+      <li><h3>Prezzi più bassi</h3><p>Nettamente più convenienti della concorrenza.</p></li>
+      <li><h3>Professionalità</h3><p>Esperienza vera nell'assistenza caldaie.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 6. OBIETTIVI -->
+<section class="goals" id="obiettivi">
+  <div class="marquee m1" aria-hidden="true" data-words="Più clienti|Più clienti"></div>
+  <div class="marquee m2" aria-hidden="true" data-words="Pubblicità|Collaborazioni"></div>
+  <div class="goals-inner">
+    <h2 class="h-section">Obiettivi</h2>
+    <p class="goals-big">Avevo tutte le informazioni che rendono Termoclima migliore: le sue skill, i suoi punti di forza. Il passo successivo era assemblare tutto e passare al concreto.</p>
+    <p>Per farlo ho organizzato video meet con alcune agenzie di comunicazione e con l'immobiliare di mio papà.</p>
+  </div>
+</section>
+
+<!-- 7. COLLABORAZIONI -->
+<section class="collab" id="collaborazioni">
+  <div class="collab-inner">
+    <div class="collab-text">
+      <h2 class="h-section">Collaborazioni</h2>
+      <p class="lead">Un sistema che porta guadagno a ogni membro che collabora con Termoclima.</p>
+      <p>La ruota è semplice. CS Immobiliare affitta e vende case, il luogo di lavoro principale di Termoclima. Termoclima lavora nelle case e conosce clienti, il pane quotidiano di CS Immobiliare. Un continuo scambio di clienti che crea lavoro per anni, non per un solo periodo.</p>
+      <div class="edoardo">
+        <h3>Edoardo, Meta Ads</h3>
+        <p>Tecnico specializzato in pubblicità e in tutto ciò che riguarda Meta Ads. L'ho trovato e l'ho fatto affiancare al titolare per i prossimi 9 mesi. Dopo vari meet, insieme abbiamo scritto un business plan.</p>
+      </div>
+    </div>
+
+    <div class="wheel-wrap">
+      <svg class="wheel" viewBox="0 0 400 400" role="img" aria-label="Ruota dello scambio di clienti tra Termoclima e CS Immobiliare">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="currentColor"/></marker>
+        </defs>
+        <circle cx="200" cy="200" r="150" class="wheel-track"/>
+        <g class="wheel-spin">
+          <path d="M200 50a150 150 0 0 1 150 150" class="wheel-arc a1" marker-end="url(#arr)"/>
+          <path d="M200 350a150 150 0 0 1-150-150" class="wheel-arc a2" marker-end="url(#arr)"/>
+          <g class="wheel-dots">
+            <circle cx="200" cy="50" r="7"/><circle cx="350" cy="200" r="7"/><circle cx="200" cy="350" r="7"/><circle cx="50" cy="200" r="7"/>
+          </g>
+        </g>
+        <g class="wheel-node n-tc" transform="translate(200 128)">
+          <circle r="52"/>
+          <use href="#logo" x="-22" y="-34" width="44" height="52"/>
+          <text y="34">Termoclima</text>
+        </g>
+        <g class="wheel-node n-cs" transform="translate(200 272)">
+          <circle r="52"/>
+          <path d="M-22 -2 0-22 22-2M-16 -8v22M16 -8v22" fill="none" stroke="#2F7D3A" stroke-width="4" stroke-linecap="round"/>
+          <text y="2" class="cs-mark">CS</text>
+          <text y="34">Immobiliare</text>
+        </g>
+      </svg>
+      <p class="wheel-cap">Clienti che girano in entrambe le direzioni</p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. PRODOTTI -->
+<section class="products" id="prodotti">
+  <div class="products-pin">
+    <div class="products-head">
+      <h2 class="h-section">Tutti i prodotti creati</h2>
+      <p>Volantinaggio, biglietti da visita, adesivi, locandine e una promozione pensata per i clienti.</p>
+    </div>
+    <div class="track">
+      <figure class="prod p-tall">
+        <div class="prod-img"><img src="assets/volantino-crop.jpg" alt="Volantino Promo caldaia: pulizia più fumi a 99 euro, in collaborazione con CS Immobiliare"></div>
+        <figcaption><b>Volantino</b> Promo caldaia, pulizia + fumi a 99 €, valida dal 15/09/26 al 15/04/27.</figcaption>
+      </figure>
+      <figure class="prod p-wide">
+        <div class="prod-img"><img src="assets/card-front.jpg" alt="Biglietto da visita, fronte"></div>
+        <figcaption><b>Biglietto da visita</b> Il fronte: logo e "Centro assistenza caldaie".</figcaption>
+      </figure>
+      <figure class="prod p-wide p-low">
+        <div class="prod-img"><img src="assets/card-back.jpg" alt="Biglietto da visita, retro"></div>
+        <figcaption><b>Il retro</b> Telefono ed email, niente di superfluo.</figcaption>
+      </figure>
+      <figure class="prod p-tall">
+        <div class="prod-img"><img src="assets/biglietto-porta.jpg" alt="Biglietti da visita nel loro porta biglietti"></div>
+        <figcaption><b>Pronti da distribuire</b> I biglietti nel porta biglietti, in furgone.</figcaption>
+      </figure>
+      <div class="prod prod-type t-promo">
+        <p class="promo-big">Ci porti un cliente?<br>Ti facciamo lo sconto.</p>
+        <p><b>Promozione clienti</b> Proposta di persona, direttamente durante gli interventi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. CALL CON EDOARDO -->
+<section class="call" id="edoardo">
+  <div class="call-inner">
+    <div class="call-head">
+      <h2 class="h-section">La call con Edoardo</h2>
+      <p>Edoardo segue Termoclima e tutto il suo raggio di clientela: la visibilità di Termoclima su Google e sui motori di ricerca, e una promozione continua per molti mesi. Così abbiamo lavorato.</p>
+    </div>
+    <ol class="steps">
+      <span class="steps-line" aria-hidden="true"><i></i></span>
+      <li>
+        <h3>Mind map</h3>
+        <p>Le parole di riferimento da associare a Termoclima nelle ricerche online.</p>
+        <div class="keywords" aria-hidden="true"><span>assistenza caldaie</span><span>pulizia caldaia</span><span>analisi fumi</span><span>manutenzione</span><span>pronto intervento</span></div>
+      </li>
+      <li>
+        <h3>Analisi 2020–2025</h3>
+        <p>Fatturati e incassi di cinque anni, insieme a tutti i prezzi, le tariffe e i servizi offerti.</p>
+      </li>
+      <li>
+        <h3>Nuovi prezzi</h3>
+        <p>Un nuovo prezzo per ogni servizio, più efficace e completo.</p>
+      </li>
+      <li>
+        <h3>Il raggio d'azione</h3>
+        <p>Mancava solo questo. Una volta ridefinito, ha dato coerenza a prezzo, servizio, reperibilità e pubblicità.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 10. COSA HO IMPARATO -->
+<section class="learn" id="imparato">
+  <h2 class="h-section">Cosa ho imparato</h2>
+  <p class="learn-text">Impresa, responsabilità, determinazione. Ma sono solo aggettivi. La cosa più importante per conoscersi e capire cosa fare nel futuro è accettare quali sono i nostri punti di forza e quali di debolezza. Sotto molti aspetti sono mediocre, ma sotto altri spicco totalmente. E questo mi rende fiero di essere me.</p>
+</section>
+
+<!-- 11. RISULTATI -->
+<section class="results" id="risultati">
+  <div class="results-inner">
+    <h2 class="h-section">Risultati</h2>
+
+    <div class="res-hero">
+      <div class="res-big"><span class="plus">+</span><span data-count="90">90</span><span class="pct">%</span></div>
+      <p>Aumento stimato dei clienti in una sola stagione: circa 180 nuovi clienti.</p>
+    </div>
+
+    <div class="res-rows">
+      <div class="res-row">
+        <span class="res-label">Clienti iniziali</span>
+        <span class="res-bar"><i style="--w:.5"></i></span>
+        <span class="res-num" data-count="200">200</span>
+      </div>
+      <div class="res-row">
+        <span class="res-label">Con le collaborazioni, in 3 settimane</span>
+        <span class="res-bar"><i style="--w:.0625"></i></span>
+        <span class="res-num">+<span data-count="25">25</span></span>
+      </div>
+      <div class="res-row">
+        <span class="res-label">Con la mia pubblicità</span>
+        <span class="res-bar"><i style="--w:.02"></i></span>
+        <span class="res-num">+<span data-count="8">8</span></span>
+      </div>
+      <div class="res-row est">
+        <span class="res-label">Da CS Immobiliare, a fine stagione (stima)</span>
+        <span class="res-bar"><i style="--w:.15"></i></span>
+        <span class="res-num">~<span data-count="60">60</span></span>
+      </div>
+      <div class="res-row est">
+        <span class="res-label">Da Meta Ads con Edoardo (stima)</span>
+        <span class="res-bar"><i style="--w:.3"></i></span>
+        <span class="res-num">~<span data-count="120">120</span></span>
+      </div>
+      <div class="res-goal" aria-hidden="true"><span>Soglia 400</span></div>
+    </div>
+
+    <div class="res-notes">
+      <div>
+        <p class="res-k"><span data-count="16.5" data-dec="1">16,5</span>%</p>
+        <p>Clienti acquisiti da Termoclima con il mio aiuto, in 3 settimane.</p>
+      </div>
+      <div>
+        <p class="res-k">5–10</p>
+        <p>Clienti al mese portati in media da CS Immobiliare.</p>
+      </div>
+      <div>
+        <p class="res-k">~20</p>
+        <p>Clienti al mese attesi con Meta Ads, dopo almeno 3 mesi di backtesting.</p>
+      </div>
+    </div>
+
+    <p class="res-dream">E la crescita continua. Raggiunta la soglia di <strong>400 clienti</strong>, il titolare potrà finalmente ingrandire l'azienda e competere con ditte come Idrocalor e Parma Clima.</p>
+  </div>
+</section>
+
+<!-- 12. CONCLUSIONI -->
+<section class="thanks" id="grazie">
+  <div class="thanks-glow" data-speed="-0.2"></div>
+  <div class="thanks-inner">
+    <h2 class="h-section">Conclusioni e ringraziamenti</h2>
+    <p>Porto con me molti risultati concreti, ma soprattutto morali. Ho avuto il coraggio di fare qualcosa di diverso, che se non fosse andato secondo i piani avrebbe pesato sul mio esame di stato.</p>
+    <p>Ringrazio Michele per la fiducia: ha investito su consigli che ho proposto personalmente e si è fidato di me in ogni collaborazione. Ne è nato un rapporto professionale solido, basato sul rispetto reciproco.</p>
+    <p class="thanks-quote">Grazie per la fiducia.</p>
+    <p class="thanks-end">Questa esperienza mi ha reso fiero del lavoro svolto e mi ha dato una direzione chiara per il mio futuro.</p>
+    <p class="sign">Manuel Paini</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-brand">
+    <svg><use href="#logo"/></svg>
+    <div><strong>Termo<b>clima</b></strong><span>di Michele, centro assistenza caldaie</span></div>
+  </div>
+  <div class="foot-contact">
+    <a href="tel:+393454513784">345 451 3784</a>
+    <a href="mailto:termoclimassistenza@gmail.com">termoclimassistenza@gmail.com</a>
+  </div>
+  <p class="foot-note">Progetto di alternanza scuola-lavoro di Manuel Paini, Istituto Tecnico Tecnologico Rondani, 2026.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<script>
+/* Oltre il mestiere — animazioni */
+(() => {
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const root = document.documentElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---------- Marquee: parole separate dal logo ---------- */
+  $$('.marquee').forEach(m => {
+    const words = m.dataset.words.split('|');
+    const unit = words.map(w => `<span>${w}</span><svg><use href="#logo"/></svg>`).join('');
+    m.innerHTML = `<div class="marquee-inner">${unit.repeat(4)}</div>`;
+  });
+
+  /* ---------- Menu mobile ---------- */
+  const navEl = $('.nav'), toggle = $('.nav-toggle');
+  const setMenu = open => {
+    navEl.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+    window.__lenis?.[open ? 'stop' : 'start']();
+  };
+  toggle.addEventListener('click', () => setMenu(!navEl.classList.contains('open')));
+  $$('#menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && navEl.classList.contains('open')) { setMenu(false); toggle.focus(); } });
+
+  /* ---------- Biglietto 3D: flip + tilt (funziona sempre) ---------- */
+  const card = $('.card3d');
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  if (fine && !reduced) {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      card.style.transition = 'transform .15s linear';
+      card.style.setProperty('--ry', `${x * 22}deg`);
+      card.style.setProperty('--rx', `${-y * 16}deg`);
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.transition = '';
+      card.style.setProperty('--ry', '0deg');
+      card.style.setProperty('--rx', '0deg');
+    });
+  }
+
+  /* ---------- Riflettore che segue il mouse ---------- */
+  const skills = $('.skills');
+  skills.addEventListener('pointermove', e => {
+    const r = skills.getBoundingClientRect();
+    skills.style.setProperty('--mx', `${e.clientX - r.left}px`);
+    skills.style.setProperty('--my', `${e.clientY - r.top}px`);
+  });
+
+  if (typeof gsap === 'undefined') { document.body.classList.remove('is-loading'); $('.loader')?.remove(); return; }
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  document.fonts.ready.then(init);
+  function init() {
+
+  /* ---------- Termostato: temperatura legata allo scroll ---------- */
+  const thermo = $('.thermo'), thermoVal = $('.thermo-val');
+  ScrollTrigger.create({
+    start: 0, end: 'max',
+    onUpdate: self => {
+      root.style.setProperty('--heat', self.progress.toFixed(3));
+      thermoVal.textContent = Math.round(18 + self.progress * 57);
+      thermo.classList.toggle('on', self.scroll() > window.innerHeight * .5);
+    }
+  });
+
+  /* ---------- Nav ---------- */
+  const nav = $('.nav');
+  let lastY = 0;
+  ScrollTrigger.create({
+    start: 0, end: 'max',
+    onUpdate: self => {
+      const y = self.scroll();
+      nav.classList.toggle('scrolled', y > 40);
+      nav.classList.toggle('hide', y > lastY && y > 400 && !nav.classList.contains('open'));
+      lastY = y;
+    }
+  });
+
+  if (reduced) {
+    $('.loader')?.remove();
+    document.body.classList.remove('is-loading');
+    return;
+  }
+
+  /* ---------- Smooth scroll (Lenis) ---------- */
+  let lenis = null;
+  if (window.Lenis) {
+    lenis = new Lenis({ lerp: .09, wheelMultiplier: 1 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    lenis.stop();
+    window.__lenis = lenis;
+  }
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    const target = id === '#top' ? 0 : $(id);
+    if (target === null) return;
+    e.preventDefault();
+    lenis ? lenis.scrollTo(target, { duration: 1.6, offset: 0 }) : (target ? target.scrollIntoView({ behavior: 'smooth' }) : scrollTo({ top: 0, behavior: 'smooth' }));
+  }));
+
+  /* ---------- Cursore fiamma ---------- */
+  if (fine) {
+    const cur = $('.cursor');
+    const xTo = gsap.quickTo(cur, 'x', { duration: .35, ease: 'power3' });
+    const yTo = gsap.quickTo(cur, 'y', { duration: .35, ease: 'power3' });
+    addEventListener('pointermove', e => { xTo(e.clientX); yTo(e.clientY); cur.style.opacity = 1; });
+    $$('a, button').forEach(el => {
+      el.addEventListener('pointerenter', () => cur.classList.add('big'));
+      el.addEventListener('pointerleave', () => cur.classList.remove('big'));
+    });
+  }
+
+  /* ---------- Braci che salgono (canvas hero) ---------- */
+  const canvas = $('.embers'), ctx = canvas.getContext('2d');
+  let W, H, embers = [], heroVisible = true, mouse = { x: -999, y: -999 };
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const resize = () => {
+    W = canvas.clientWidth; H = canvas.clientHeight;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round(Math.min(110, W / 12));
+    embers = Array.from({ length: n }, () => spawn(true));
+  };
+  const spawn = (anywhere) => ({
+    x: Math.random() * W,
+    y: anywhere ? Math.random() * H : H + 10,
+    r: Math.random() * 2.2 + .6,
+    vy: Math.random() * .7 + .3,
+    vx: (Math.random() - .5) * .3,
+    life: Math.random() * Math.PI * 2,
+    hue: Math.random() < .2 ? 230 : 15 + Math.random() * 30
+  });
+  const draw = () => {
+    if (heroVisible) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      for (const p of embers) {
+        p.life += .04;
+        p.y -= p.vy;
+        p.x += p.vx + Math.sin(p.life) * .35;
+        const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
+        if (d < 120) { p.x += dx / d * 2.2; p.y += dy / d * 2.2; }
+        if (p.y < -10) Object.assign(p, spawn(false));
+        const a = .35 + Math.sin(p.life * 2) * .3 + .3;
+        const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        g.addColorStop(0, `hsla(${p.hue}, 100%, 65%, ${a})`);
+        g.addColorStop(1, `hsla(${p.hue}, 100%, 50%, 0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    requestAnimationFrame(draw);
+  };
+  resize(); draw();
+  addEventListener('resize', resize);
+  $('.hero').addEventListener('pointermove', e => { const r = canvas.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+  ScrollTrigger.create({ trigger: '.hero', start: 'top bottom', end: 'bottom top', onToggle: s => heroVisible = s.isActive });
+
+  /* ---------- Hero: parallax (scroll + mouse) ---------- */
+  $$('.hero [data-speed]').forEach(el => {
+    gsap.to(el, { y: () => parseFloat(el.dataset.speed) * innerHeight, ease: 'none',
+      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  });
+  gsap.to('.hero-inner', { yPercent: 30, opacity: 0, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+  if (fine) {
+    const layers = [['.blob-flame', 60], ['.blob-drop', -45], ['.hero-ghost', 30]].map(([s, k]) => ({
+      k, x: gsap.quickTo(s, 'xPercent', { duration: 1.2, ease: 'power3' }), r: gsap.quickTo(s, 'rotation', { duration: 1.2, ease: 'power3' })
+    }));
+    $('.hero').addEventListener('pointermove', e => {
+      const nx = e.clientX / innerWidth - .5;
+      layers.forEach(l => { l.x(nx * l.k / 6); l.r(nx * l.k / 10); });
+    });
+  }
+
+  /* ---------- Preloader + ingresso hero ---------- */
+  const titleSplit = SplitText.create('.hero-title .line:first-child', { type: 'chars', charsClass: 'char' });
+  const temp = { v: 0 };
+  const lcd = $('.lcd'), lt = $('.loader-temp');
+  const intro = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  intro
+    .from('.loader-logo', { scale: .4, opacity: 0, duration: .8, ease: 'back.out(2)' })
+    .to(temp, { v: 45, duration: 1.4, ease: 'power2.inOut',
+      onUpdate: () => {
+        lt.textContent = Math.round(temp.v);
+        lcd.style.color = `color-mix(in oklab, #9BE7FF ${100 - temp.v / 45 * 100}%, #FF7A3D)`;
+      } }, '<.1')
+    .to('.loader-panel', { scale: .9, opacity: 0, duration: .5, ease: 'power2.in' }, '+=.15')
+    .to('.loader', { clipPath: 'inset(0 0 100% 0)', duration: 1, ease: 'expo.inOut' }, '-=.1')
+    .add(() => { $('.loader').remove(); document.body.classList.remove('is-loading'); lenis?.start(); })
+    .from('.hero-logo .lg-drop', { scale: 0, transformOrigin: '60% 100%', duration: 1.1 }, '-=.5')
+    .from('.hero-logo .lg-flame', { scaleY: 0, transformOrigin: '50% 100%', duration: 1, ease: 'elastic.out(1, .5)' }, '<.15')
+    .from('.hero-logo .lg-roof', { opacity: 0, y: -14, duration: .6 }, '<.2')
+    .from('.hero-logo .lg-house, .hero-logo g', { y: 20, opacity: 0, duration: .6 }, '<')
+    .from('.hero-brand, .hero-x, .rondani', { x: -30, opacity: 0, stagger: .1, duration: .9 }, '<.1')
+    .from(titleSplit.chars, { yPercent: 115, rotate: 8, stagger: .035, duration: 1.1 }, '<.1')
+    .from('.line-heat', { yPercent: 105, skewY: 6, duration: 1.2 }, '<.25')
+    .from('.hero-sub', { y: 30, opacity: 0, duration: 1 }, '<.4')
+    .from('.hero-scroll', { opacity: 0, duration: 1 }, '<.3')
+    .from('.hero-ghost', { opacity: 0, scale: .8, duration: 2 }, '<-.6');
+  document.body.classList.add('is-loading');
+
+  /* ---------- Indice ---------- */
+  gsap.from('.index-photo', { rotate: -10, scale: .85, opacity: 0, duration: 1.4, ease: 'expo.out',
+    scrollTrigger: { trigger: '.index', start: 'top 75%' } });
+  gsap.from('.index-list li', { x: 60, opacity: 0, stagger: .06, duration: 1, ease: 'expo.out',
+    scrollTrigger: { trigger: '.index-list ol', start: 'top 80%' } });
+
+  /* ---------- La mia scelta: parole a ritmo di scroll ---------- */
+  const words = $$('.choice-words span');
+  const ch = gsap.timeline({ scrollTrigger: { trigger: '.choice', start: 'top top', end: 'bottom bottom', scrub: .6 } });
+  gsap.set(words.slice(1), { opacity: 0, yPercent: 60, filter: 'blur(12px)' });
+  ch.from('.choice-q', { opacity: 0, y: 40, duration: .5 });
+  ch.from(words[0], { opacity: 0, yPercent: 60, filter: 'blur(12px)', duration: .6 }, '<');
+  words.forEach((w, i) => {
+    if (i === 0) return;
+    ch.to(words[i - 1], { opacity: 0, yPercent: -60, filter: 'blur(12px)', duration: .6 }, '+=.5')
+      .to(w, { opacity: 1, yPercent: 0, filter: 'blur(0px)', duration: .6 }, '<.15');
+  });
+  ch.to('.w-risk', { scale: 1.12, textShadow: '0 0 60px rgba(240,70,31,.8)', duration: .6 }, '+=.1')
+    .to('.choice-a', { opacity: 1, y: 0, duration: .6 }, '<')
+    .to({}, { duration: .5 });
+  gsap.set('.choice-a', { y: 40 });
+
+  /* ---------- Competenze ---------- */
+  if (!fine) {
+    gsap.to(skills, { '--mx': '80%', '--my': '70%', duration: 5, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  }
+  const leadSplit = SplitText.create('.skills-lead', { type: 'words', wordsClass: 'word' });
+  gsap.from(leadSplit.words, { opacity: .1, y: 20, stagger: .03, duration: .8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.skills-lead', start: 'top 80%' } });
+  gsap.from('.skills-quote', { x: -40, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.skills-quote', start: 'top 85%' } });
+  gsap.from('.weeks-num', { scale: 2.2, opacity: 0, rotate: -12, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.skills-weeks', start: 'top 80%' } });
+  gsap.from('.weeks-txt > *, .weeks-txt li', { y: 30, opacity: 0, stagger: .08, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.skills-weeks', start: 'top 75%' } });
+
+  /* ---------- Cliente ---------- */
+  gsap.from('.client', { borderRadius: '240px 240px 0 0', ease: 'none', scrollTrigger: { trigger: '.client', start: 'top bottom', end: 'top 30%', scrub: true } });
+  gsap.from('.card3d-wrap', { rotateX: 50, rotateY: -35, y: 120, scale: .8, opacity: 0, ease: 'none',
+    scrollTrigger: { trigger: '.client-grid', start: 'top 95%', end: 'top 40%', scrub: 1 } });
+  gsap.from('.strengths li', { x: 80, opacity: 0, stagger: .12, duration: 1.1, ease: 'expo.out',
+    scrollTrigger: { trigger: '.strengths', start: 'top 80%' } });
+  ScrollTrigger.create({ trigger: '.card3d-wrap', start: 'top 35%', once: true,
+    onEnter: () => { card.classList.add('flipped'); setTimeout(() => card.classList.remove('flipped'), 1400); } });
+
+  /* ---------- Obiettivi: marquee legate allo scroll + skew da velocità ---------- */
+  const m1 = $('.m1 .marquee-inner'), m2 = $('.m2 .marquee-inner');
+  gsap.fromTo(m1, { xPercent: 0 }, { xPercent: -35, ease: 'none', scrollTrigger: { trigger: '.goals', start: 'top bottom', end: 'bottom top', scrub: .5 } });
+  gsap.fromTo(m2, { xPercent: -35 }, { xPercent: 0, ease: 'none', scrollTrigger: { trigger: '.goals', start: 'top bottom', end: 'bottom top', scrub: .5 } });
+  const skewTo = gsap.quickTo('.marquee', 'skewX', { duration: .6, ease: 'power3' });
+  if (lenis) lenis.on('scroll', ({ velocity }) => skewTo(gsap.utils.clamp(-14, 14, -velocity * .6)));
+  gsap.from('.goals-inner > *', { y: 50, opacity: 0, stagger: .12, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.goals-inner', start: 'top 80%' } });
+
+  /* ---------- Collaborazioni: la ruota gira con lo scroll ---------- */
+  gsap.to('.wheel-spin', { rotation: 540, ease: 'none', svgOrigin: '200 200',
+    scrollTrigger: { trigger: '.collab', start: 'top bottom', end: 'bottom top', scrub: 1 } });
+  gsap.from('.wheel-node', { scale: 0, transformOrigin: '50% 50%', stagger: .2, duration: 1.2, ease: 'back.out(1.8)',
+    scrollTrigger: { trigger: '.wheel', start: 'top 75%' } });
+  gsap.from('.collab-text > *', { y: 50, opacity: 0, stagger: .1, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.collab', start: 'top 70%' } });
+  gsap.fromTo('.wheel', { y: 80 }, { y: -80, ease: 'none', scrollTrigger: { trigger: '.collab', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  /* ---------- Prodotti: scroll orizzontale con parallax interno ---------- */
+  const track = $('.track');
+  const dist = () => Math.max(0, track.scrollWidth - innerWidth);
+  const hScroll = gsap.to(track, { x: () => -dist(), ease: 'none',
+    scrollTrigger: { trigger: '.products', pin: true, scrub: 1, start: 'top top', end: () => '+=' + dist(), invalidateOnRefresh: true, anticipatePin: 1 } });
+  $$('.prod-img img').forEach(img => {
+    gsap.fromTo(img, { xPercent: -4 }, { xPercent: 4, ease: 'none',
+      scrollTrigger: { trigger: img.parentElement, containerAnimation: hScroll, start: 'left right', end: 'right left', scrub: true } });
+  });
+  $$('.prod').forEach((p, i) => {
+    gsap.from(p, { rotate: i % 2 ? 6 : -6, y: i % 2 ? 80 : -60, ease: 'none',
+      scrollTrigger: { trigger: p, containerAnimation: hScroll, start: 'left right', end: 'center center', scrub: true } });
+  });
+  gsap.from('.products-head > *', { y: 40, opacity: 0, stagger: .1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.products', start: 'top 70%' } });
+
+  /* ---------- Call con Edoardo: la linea si riempie ---------- */
+  gsap.fromTo('.steps-line i', { scaleY: 0 }, { scaleY: 1, ease: 'none',
+    scrollTrigger: { trigger: '.steps', start: 'top 65%', end: 'bottom 65%', scrub: true } });
+  $$('.steps li').forEach(li => {
+    gsap.from(li, { x: 60, opacity: 0, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: li, start: 'top 75%' } });
+  });
+  gsap.from('.keywords span', { scale: 0, rotate: () => gsap.utils.random(-20, 20), stagger: .07, duration: .8, ease: 'back.out(2.5)',
+    scrollTrigger: { trigger: '.keywords', start: 'top 85%' } });
+
+  /* ---------- Cosa ho imparato: le parole si "accendono" ---------- */
+  const learnSplit = SplitText.create('.learn-text', { type: 'words', wordsClass: 'word' });
+  gsap.to(learnSplit.words, { color: '#12143A', stagger: .1, ease: 'none',
+    scrollTrigger: { trigger: '.learn-text', start: 'top 80%', end: 'bottom 45%', scrub: true } });
+  const fierWords = learnSplit.words.slice(-6);
+  gsap.to(fierWords, { color: '#F0461F', stagger: .1, ease: 'none',
+    scrollTrigger: { trigger: '.learn-text', start: 'bottom 60%', end: 'bottom 40%', scrub: true } });
+
+  /* ---------- Risultati: contatori e barre ---------- */
+  const fmt = (v, dec) => dec ? v.toFixed(1).replace('.', ',') : Math.round(v);
+  $$('[data-count]').forEach(el => {
+    const end = parseFloat(el.dataset.count), dec = !!el.dataset.dec, o = { v: 0 };
+    el.textContent = fmt(0, dec);
+    gsap.to(o, { v: end, duration: 2.2, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' },
+      onUpdate: () => el.textContent = fmt(o.v, dec) });
+  });
+  gsap.from('.res-bar i', { scaleX: 0, stagger: .15, duration: 1.6, ease: 'expo.out', scrollTrigger: { trigger: '.res-rows', start: 'top 75%' } });
+  gsap.from('.res-goal', { scaleY: 0, transformOrigin: 'bottom', duration: 1, ease: 'expo.out', delay: .8, scrollTrigger: { trigger: '.res-rows', start: 'top 75%' } });
+  gsap.from('.results', { borderRadius: '240px 240px 0 0', ease: 'none', scrollTrigger: { trigger: '.results', start: 'top bottom', end: 'top 30%', scrub: true } });
+  gsap.from('.res-big', { scale: .6, opacity: 0, duration: 1.4, ease: 'expo.out', scrollTrigger: { trigger: '.res-hero', start: 'top 80%' } });
+  gsap.from('.res-notes > div, .res-dream', { y: 40, opacity: 0, stagger: .12, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.res-notes', start: 'top 80%' } });
+
+  /* ---------- Grazie ---------- */
+  gsap.to('.thanks-glow', { y: () => innerHeight * -.3, scale: 1.3, ease: 'none',
+    scrollTrigger: { trigger: '.thanks', start: 'top bottom', end: 'bottom top', scrub: true } });
+  const qSplit = SplitText.create('.thanks-quote', { type: 'words,chars', charsClass: 'char', wordsClass: 'word' });
+  gsap.from(qSplit.chars, { yPercent: 100, opacity: 0, rotateX: -90, stagger: .025, duration: 1, ease: 'back.out(2)',
+    scrollTrigger: { trigger: '.thanks-quote', start: 'top 80%' } });
+  gsap.from('.thanks-inner > p:not(.thanks-quote)', { y: 40, opacity: 0, stagger: .1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.thanks-inner', start: 'top 75%' } });
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+  }
+})();
+
+</script>
+</body>
+</html>
